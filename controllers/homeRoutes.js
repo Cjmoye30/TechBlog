@@ -1,7 +1,5 @@
 const router = require('express').Router();
-
 const { User } = require('../models');
-// const User = require('../models/User');
 const Blogposts = require('../models/blogposts');
 
 // Dispaly all of the blogposts
