@@ -1,0 +1,23 @@
+<div>
+  <h1>All BlogPosts: </h1>
+
+  {{#each blogArr}}
+  <div class="blogpost">
+
+    <div class="blog-header">
+      <h1>{{title}}</h1>
+      <p>Author Name: {{user.name}}</p>
+    </div>
+
+    <p>{{description}}</p>
+
+  </div>
+  {{/each}}
+
+</div>
+
+{{!-- This page should show all of the posts by the different users AFTER they are logged in --}}
+{{!-- We can populate our database with random educational facts about tech - EASY --}}
+{{!-- Once logged in, the API for the homepage will get all blog posts --}}
+{{!-- the database can have just one table which stores all of the blog posts by all of the users - then if we would
+ever want to query by a single user, then we can pass that into the url --}}
