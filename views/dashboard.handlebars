@@ -1,8 +1,20 @@
+<h1>Dashboard Page</h1>
 <div>
-    <h1>Dashboard Page</h1>
-</div>
+    <h2>Welcome back, {{userArray.name}}</h2>
 
+    <div>
+        <h3>Your Blogposts:</h3>
 
-<div>
-    <h1>Welcome back, {{name}}</h1>
+        {{#each userArray.blogposts}}
+
+        <h1> {{title}} </h1>
+        <p> {{description}} </p>
+
+        {{/each}}
+
+    </div>
 </div>
+{{!-- Having the access the object that you are calling --}}
+
+{{!-- if they have blogposts.len > 1, then display them below --}}
+{{!-- else, tell them they have no blogposts and to type something in and click add so they can get started --}}
