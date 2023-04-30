@@ -1,7 +1,5 @@
 const router = require('express').Router();
-
 const { User } = require('../models');
-// const User = require('../models/User');
 const Blogposts = require('../models/blogposts');
 
 // Dispaly all of the blogposts
@@ -21,7 +19,7 @@ try {
 
   // Map the data in order to get a new array with only the needed info - i.e. - only the information that is posted in the database and eliminating any of the promise data
 
-  const blogArr = blogData.map((i) => i.toJSON());
+  const blogArr = blogData.get({ plain: true });
   console.log(blogArr);
 
   // Sending the data to the homepage
