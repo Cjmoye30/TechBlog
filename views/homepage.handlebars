@@ -1,5 +1,10 @@
+{{!-- This page will show only 3 blogposts regardless of if the user is logged in or not, and then ask the user to login
+--}}
+{{!-- Once logged in, then they can potentially view the rest (if i can figure that out) and then they can go to their
+own dashboard to post new content --}}
+
 <div>
-  <h1>All BlogPosts: </h1>
+  <h1>Take a look at our most recent blogposts from accredited users! </h1>
 
   {{#each blogArr}}
   <div class="blogpost">
@@ -14,6 +19,14 @@
   </div>
   {{/each}}
 
+</div>
+
+<div class="call-to-action">
+  <h2>Want to contribute? Sign up or login below!</h2>
+  <div class="login-buttons">
+    <button>Login</button>
+    <button>Signup</button>
+  </div>
 </div>
 
 {{!-- This page should show all of the posts by the different users AFTER they are logged in --}}

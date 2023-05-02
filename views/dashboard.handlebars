@@ -2,6 +2,7 @@
 <div>
     <h2>Welcome back, {{userArray.name}}</h2>
 
+    {{!-- Showing the user each of their blogposts after they are logged in --}}
     <div>
         <h3>Your Blogposts:</h3>
 
@@ -14,7 +15,24 @@
 
     </div>
 </div>
-{{!-- Having the access the object that you are calling --}}
 
-{{!-- if they have blogposts.len > 1, then display them below --}}
-{{!-- else, tell them they have no blogposts and to type something in and click add so they can get started --}}
+{{!-- Section for the user to add a new blogpost --}}
+<h1>Add a new post below:</h1>
+<div class="newPost">
+
+    <form class="form new-blog-form">
+      <div class="form-group">
+        <label for="project-name">Blog Title:</label>
+        <input class="form-input" type="text" id="blog-title" name="project-name" />
+      </div>
+
+      <div class="form-group">
+        <label for="project-desc">description:</label>
+        <textarea class="form-input" id="blog-desc" name="project-desc"></textarea>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary newBlogButton">Create</button>
+      </div>
+    </form>
+</div>
