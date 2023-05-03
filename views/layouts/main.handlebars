@@ -14,9 +14,10 @@
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/styles.css">
 
-{{!-- JQuery Script --}}
+  {{!-- JQuery Script --}}
   <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
     integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -29,8 +30,8 @@
         <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
 
         {{!-- Create conditional - if user is logged in, then show logout and vice versa --}}
-        <a class="nav-item nav-link" href="/login">Login</a>
-        <a class="nav-item nav-link" href="#">Logout</a>
+        <a class="nav-item nav-link loginButton" href="/login">Login</a>
+        <a class="nav-item nav-link logoutButton" href="">Logout</a>
 
       </div>
     </nav>
@@ -50,11 +51,13 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
 
-  <!-- JQuery Added -->
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
   {{!-- JS File --}}
   <script src="/js/dashboard.js"></script>
+
+  {{!-- Only importing the logout.js if someone is actually logged in already --}}
+  {{#if logged_in}}
+  <script type="text/javascript" src="/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
