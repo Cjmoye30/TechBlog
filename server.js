@@ -27,6 +27,13 @@ const sess = {
 
 app.use(session(sess));
 
+// Adding in this so that we are able to access session variables in any of our handlebars templates
+// https://stackoverflow.com/questions/44883228/how-to-get-the-express-session-variable-in-all-the-handlebars-pages-right-now-i
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  next();
+});
+
 
 //set up handlebars as the "view engine"
 app.engine('handlebars', hbs.engine);
