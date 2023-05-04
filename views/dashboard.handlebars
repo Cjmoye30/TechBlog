@@ -1,18 +1,15 @@
 <h1>Dashboard Page</h1>
 <div>
 
-  {{!-- Why am I not able to get the name --}}
-    <h2>Welcome back, {{{user.name}}} (the name will not insert)</h2>
-
     {{!-- Showing the user each of their blogposts after they are logged in --}}
     <div>
+      <h1>Hello, {{session.name}}!</h1>
         <h3>Your Blogposts:</h3>
 
         {{#each userArray}}
 
         <h1> {{title}} </h1>
         <p> {{description}} </p>
-        <p> {{user.name}} </p>
 
         {{/each}}
 

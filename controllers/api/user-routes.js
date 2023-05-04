@@ -2,8 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../../models')
 
-
-
 router.post('/login', async (req, res) => {
     console.log("POST request hit!")
     try {
@@ -29,10 +27,9 @@ router.post('/login', async (req, res) => {
             // checking for password through the bcrypt
             const match = await bcrypt.compare(req.body.password, userData.password);
             if (match) {
-                console.log("log tf in");
-
                 req.session.save(() => {
                     req.session.user_id = userData.id;
+                    req.session.name = userData.name;
                     req.session.logged_in = true;
 
                     res.json({
@@ -64,5 +61,38 @@ router.post('/logout', (req, res) => {
         res.status(404).end();
     }
 });
+
+// Create a new usertec
+router.post('/signup', async (req, res) => {
+    const signupData = req.body;
+    console.log(signupData);
+
+    try {
+            // Create the user based on the request body sent over
+    const newUser = await User.create({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password
+    });
+
+    // sign-in the user 
+    req.session.save(() => {
+        req.session.user_id = newUser.id,
+        req.session.name = newUser.name,
+        req.session.logged_in = true;
+
+        res.json({
+            success: true,
+            user: newUser,
+            message: 'You are now logged in!'
+        });
+    });
+
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+
+})
 
 module.exports = router;
