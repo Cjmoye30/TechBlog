@@ -49,29 +49,30 @@ router.get('/signup', async (req, res) => {
 router.get('/dashboard', withAuth, async (req, res) => {
   console.log("GET request for the dashboard page by author_id!");
 
-
-    //  we are creating a new variable to take all of the raw data from our User table where the id is equal to the session.user.id
-    const userData = await Blogposts.findAll({
-      where: {
-        author_id: req.session.user_id
-      },
-      include: [
-        {
-            model: User,
-            attributes: ['name'],
-        },
-    ]
-    })
-
-    // Converting the userData into an object we can pass into our handlebars template
-    const userArray = userData.map(userData => userData.toJSON());
-    console.log(userArray);
-
-    // render the dashboard for the current user that just logged in with the new array we got from the map function
-    res.render('dashboard', {userArray});
-
-    // catch any errors that occur
-  
+  try {
+        //  we are creating a new variable to take all of the raw data from our User table where the id is equal to the session.user.id
+        const userData = await Blogposts.findAll({
+          where: {
+            author_id: req.session.user_id
+          },
+          include: [
+            {
+                model: User,
+                attributes: ['name'],
+            },
+        ]
+        });
+    
+        // Converting the userData into an object we can pass into our handlebars template
+        const userArray = userData.map(userData => userData.toJSON());
+        console.log(userArray);
+    
+        // render the dashboard for the current user that just logged in with the new array we got from the map function
+        res.render('dashboard', {userArray});
+    
+  } catch (err) {
+    res.status(500),json(err)
+  }  
 });
 
 module.exports = router;
