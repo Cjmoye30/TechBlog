@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User } = require('../../models')
+const { User, Blogposts } = require('../../models')
 
 router.post('/login', async (req, res) => {
     console.log("POST request hit!")
@@ -97,10 +97,27 @@ router.post('/signup', async (req, res) => {
 
 // Create a new Blogpost
 router.post('/blogpost', async (req, res) => {
-    console.log("POST request to create a new blogpost was hit!")
+    console.log("POST request to create a new blogpost was hit!");
+
+    const newBlogData = req.body;
+    console.log(newBlogData);
+
+    const newPost = await Blogposts.create({
+        title: req.body.title,
+        description: req.body.description,
+        author_id: req.session.user_id
+    });
+
+    console.log("New post created!");
+
+    req.session.save(() => {
+
+        res.json({
+            success: true,
+            user: newPost,
+            message: 'New post created!'
+        });
+    });
 })
-
-
-
 
 module.exports = router;
