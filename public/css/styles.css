@@ -19,8 +19,13 @@ header, footer {
 .nav-links {
     display: flex;
     flex-direction: row;
-    width: 40%;
+    width: auto;
     justify-content: space-between;
+}
+
+.nav-item {
+    margin: 2px;
+    padding: 5px 15px;
 }
 
 /* ----- Blogposts ----- */

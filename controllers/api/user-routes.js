@@ -62,13 +62,13 @@ router.post('/logout', (req, res) => {
     }
 });
 
-// Create a new usertec
+// Create a new user
 router.post('/signup', async (req, res) => {
     const signupData = req.body;
     console.log(signupData);
 
     try {
-            // Create the user based on the request body sent over
+    // Create the user based on the request body sent over
     const newUser = await User.create({
         name: req.body.name,
         email: req.body.email,
@@ -94,5 +94,13 @@ router.post('/signup', async (req, res) => {
     }
 
 })
+
+// Create a new Blogpost
+router.post('/blogpost', async (req, res) => {
+    console.log("POST request to create a new blogpost was hit!")
+})
+
+
+
 
 module.exports = router;
