@@ -25,6 +25,13 @@ Blogposts.init(
             allowNull: false,
         },
 
+        // test
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+          },
+
         // Foreign Key - author_id = user.id
         author_id: {
             type: DataTypes.INTEGER,

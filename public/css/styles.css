@@ -11,6 +11,10 @@ header, footer {
     background-color: olive;
 }
 
+main {
+    min-height: 100vh;
+}
+
 
 /* ----- Main ----- */
 .nav-links {

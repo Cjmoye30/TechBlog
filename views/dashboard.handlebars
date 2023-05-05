@@ -1,11 +1,11 @@
 <h1>Dashboard Page</h1>
 
 <!-- Button trigger modal -->
-<button id="3" type="button" class="btn btn-primary edit-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+{{!-- <button id="3" type="button" class="btn btn-primary edit-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Edit
-</button>
+</button> --}}
 
-<!-- Modal -->
+<!-- Modal to handle blogpost updates -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -42,7 +42,7 @@
 {{!-- Section to show the user their posts --}}
 <div>
   {{!-- Showing the user each of their blogposts after they are logged in --}}
-  <h1>Hello, {{session.name}}!</h1>
+  <h1>Hello, {{session.name}}! {{session.user_id}}</h1>
   <h3>Your Blogposts:</h3>
   <div class="all-blogs-container">
 
