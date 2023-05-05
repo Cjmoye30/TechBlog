@@ -111,3 +111,20 @@ $(".updateBlogButton").on("click", async () => {
         console.log(err)
     }
 });
+
+// Delete post event listener
+$(".delete-button").on("click", async (e) => {
+    blogId = e.target.id;
+    console.log(`Request to delete post of ${blogId} hit!`);
+
+    // send a response to the API
+    const response = await fetch(`/api/users/blogpost/${blogId}`, {
+        method: "DELETE",
+    });
+
+    if (response.ok) {
+        window.location.reload();
+    } else {
+        console.log("Something went wrong")
+    }
+});
