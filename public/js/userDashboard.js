@@ -1,11 +1,15 @@
+// Query Selectors to create a new blogpost
 const blogTitle = $("#blog-title");
 const blogDesc = $("#blog-desc");
 
+// Query Selectors to update a blog post
 const updateBlogTitle = $("#blog-title-update");
 const updateBlogDesc = $("#blog-desc-update");
 
+// Access the active blog id in modal after click event on edit button
 let blogId = "";
 
+// Submit new blog event handler
 $(".new-blog-form").on("submit", async (e) => {
     e.preventDefault();
 
@@ -44,7 +48,7 @@ $(".new-blog-form").on("submit", async (e) => {
     }
 });
 
-// Accessing the modal
+// Retrieve modal event handler - populate with existing title/description
 $(".edit-button").on("click", async (e) => {
     console.log("Edit button was clicked!");
 
@@ -72,8 +76,6 @@ $(".edit-button").on("click", async (e) => {
 $(".updateBlogButton").on("click", async () => {
     console.log("update blog button clicked!");
 
-    // update the field
-
     try {
 
         const updateBlog = {
@@ -97,12 +99,15 @@ $(".updateBlogButton").on("click", async () => {
         const responseData = await response.json();
         console.log(responseData);
 
+        if (responseData.success) {
+            console.log("Post updated!");
+            // reload the page to show the new post
+            window.location.reload();
+        } else {
+            console.log("Something went wrong! Try again!")
+        }
 
     } catch (err) {
         console.log(err)
     }
-
-    // reload the page to show the new post
 });
-
-//   take the data we are getting from the response and send that to the template with the modul

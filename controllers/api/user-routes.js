@@ -68,25 +68,25 @@ router.post('/signup', async (req, res) => {
     console.log(signupData);
 
     try {
-    // Create the user based on the request body sent over
-    const newUser = await User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password
-    });
-
-    // sign-in the user 
-    req.session.save(() => {
-        req.session.user_id = newUser.id,
-        req.session.name = newUser.name,
-        req.session.logged_in = true;
-
-        res.json({
-            success: true,
-            user: newUser,
-            message: 'You are now logged in!'
+        // Create the user based on the request body sent over
+        const newUser = await User.create({
+            name: req.body.name,
+            email: req.body.email,
+            password: req.body.password
         });
-    });
+
+        // sign-in the user 
+        req.session.save(() => {
+            req.session.user_id = newUser.id,
+                req.session.name = newUser.name,
+                req.session.logged_in = true;
+
+            res.json({
+                success: true,
+                user: newUser,
+                message: 'You are now logged in!'
+            });
+        });
 
 
     } catch (err) {
@@ -125,7 +125,7 @@ router.get('/blogpost/:id', async (req, res) => {
 
     try {
         const blogData = await Blogposts.findByPk(req.params.id);
-        
+
         const blog = blogData.toJSON();
 
         const blogObj = {
@@ -136,10 +136,10 @@ router.get('/blogpost/:id', async (req, res) => {
 
         console.log(blogObj);
         res.json(blogObj);
-    
-      } catch (err) {
+
+    } catch (err) {
         res.status(500).json(err)
-      }
+    }
 });
 
 router.put('/blogpost/:id', async (req, res) => {
@@ -150,7 +150,14 @@ router.put('/blogpost/:id', async (req, res) => {
                 id: req.body.id
             }
         })
-        res.json(blogData);
+
+        req.session.save(() => {
+            res.json({
+                success: true,
+                data: blogData,
+                message: 'New post created!'
+            });
+        });
 
     } catch (err) {
         res.status(500).json(err)
