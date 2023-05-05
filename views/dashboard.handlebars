@@ -10,37 +10,30 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{session.name}}</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update Blogpost</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
 
-
         {{!-- populate the modal with the id, title, and description from the button click --}}
         <form class="form update-blog-form">
           <div class="form-group">
-            <label for="blog-title">Blog Title:</label>
-            <input class="form-input update-title" type="text" id="blog-title" placeholder="hello there?" />
+            <label for="blog-title-update">New Title:</label>
+            <input class="form-input update-title" type="text" id="blog-title-update" placeholder="hello there?" />
           </div>
 
           <div class="form-group">
-            <label for="blog-desc">description:</label>
-            <textarea class="form-input update-desc" id="blog-desc"></textarea>
-          </div>
-
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary newBlogButton">Create</button>
+            <label for="blog-desc-update">New Description:</label>
+            <textarea class="form-input update-desc" id="blog-desc-update"></textarea>
           </div>
         </form>
-
-
 
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary updateBlogButton">Save changes</button>
       </div>
     </div>
   </div>
@@ -61,9 +54,13 @@
       <div class="getthis">
         <h1 class="blog-title"> {{title}} </h1>
         <p class="blog-description"> {{description}} </p>
+        <p>{{id}}</p>
       </div>
-      <i class='fas fa-edit' style='font-size:24px'></i>
-      <i class='fas fa-trash' style='font-size:24px'></i>
+      {{!-- edit button for button id --}}
+      <i id="{{id}}" type="button" class='fas fa-edit edit-button' data-bs-toggle="modal" data-bs-target="#exampleModal" style='font-size:24px'></i>
+
+      {{!-- delete button for button id --}}
+      <i id="{{id}}" class='fas fa-trash' style='font-size:24px'></i>
     </div>
 
     {{/each}}

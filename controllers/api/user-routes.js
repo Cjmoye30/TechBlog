@@ -120,7 +120,7 @@ router.post('/blogpost', async (req, res) => {
     });
 });
 
-// UPDATE an existing blogpost by the ID passed in from a button click
+// Get an existing blogpost by the ID passed in from a button click
 router.get('/blogpost/:id', async (req, res) => {
 
     try {
@@ -140,6 +140,22 @@ router.get('/blogpost/:id', async (req, res) => {
       } catch (err) {
         res.status(500).json(err)
       }
+});
+
+router.put('/blogpost/:id', async (req, res) => {
+
+    try {
+        const blogData = await Blogposts.update(req.body, {
+            where: {
+                id: req.body.id
+            }
+        })
+        res.json(blogData);
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+
 });
 
 module.exports = router;
