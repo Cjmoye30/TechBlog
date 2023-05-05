@@ -93,7 +93,7 @@ router.post('/signup', async (req, res) => {
         res.status(500).json(err)
     }
 
-})
+});
 
 // Create a new Blogpost
 router.post('/blogpost', async (req, res) => {
@@ -118,6 +118,28 @@ router.post('/blogpost', async (req, res) => {
             message: 'New post created!'
         });
     });
-})
+});
+
+// UPDATE an existing blogpost by the ID passed in from a button click
+router.get('/blogpost/:id', async (req, res) => {
+
+    try {
+        const blogData = await Blogposts.findByPk(req.params.id);
+        
+        const blog = blogData.toJSON();
+
+        const blogObj = {
+            id: blog.id,
+            title: blog.title,
+            description: blog.description
+        }
+
+        console.log(blogObj);
+        res.json(blogObj);
+    
+      } catch (err) {
+        res.status(500).json(err)
+      }
+});
 
 module.exports = router;

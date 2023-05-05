@@ -1,16 +1,69 @@
 <h1>Dashboard Page</h1>
 
+<!-- Button trigger modal -->
+<button id="3" type="button" class="btn btn-primary edit-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Edit
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{session.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+
+        {{!-- populate the modal with the id, title, and description from the button click --}}
+        <form class="form update-blog-form">
+          <div class="form-group">
+            <label for="blog-title">Blog Title:</label>
+            <input class="form-input update-title" type="text" id="blog-title" placeholder="hello there?" />
+          </div>
+
+          <div class="form-group">
+            <label for="blog-desc">description:</label>
+            <textarea class="form-input update-desc" id="blog-desc"></textarea>
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary newBlogButton">Create</button>
+          </div>
+        </form>
+
+
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {{!-- Section to show the user their posts --}}
 <div>
   {{!-- Showing the user each of their blogposts after they are logged in --}}
-  <div>
-    <h1>Hello, {{session.name}}!</h1>
-    <h3>Your Blogposts:</h3>
+  <h1>Hello, {{session.name}}!</h1>
+  <h3>Your Blogposts:</h3>
+  <div class="all-blogs-container">
 
     {{#each userArray}}
 
-    <h1> {{title}} </h1>
-    <p> {{description}} </p>
+    {{!-- store the blog id so that on a click event we can know which blog to edit --}}
+    {{!-- on edit click, give the selected blog contenteditable="true" --}}
+    <div class="blog-entry">
+      <div class="getthis">
+        <h1 class="blog-title"> {{title}} </h1>
+        <p class="blog-description"> {{description}} </p>
+      </div>
+      <i class='fas fa-edit' style='font-size:24px'></i>
+    </div>
 
     {{/each}}
 
@@ -24,7 +77,7 @@
   <form class="form new-blog-form">
     <div class="form-group">
       <label for="blog-title">Blog Title:</label>
-      <input class="form-input" type="text" id="blog-title"/>
+      <input class="form-input" type="text" id="blog-title" />
     </div>
 
     <div class="form-group">
@@ -38,5 +91,6 @@
   </form>
 </div>
 
-  <script type="text/javascript" src="/js/userDashboard.js"></script>
+<script type="text/javascript" src="/js/userDashboard.js"></script>
 
+{{!-- on button click, get the id of the blogpost you need --}}

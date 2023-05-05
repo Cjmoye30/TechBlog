@@ -42,8 +42,8 @@ router.get('/login', async (req, res) => {
 
 // Get route for sign-up screen - Optional
 router.get('/signup', async (req, res) => {
-  res.render('signup')
-})
+  res.render('signup');
+});
 
 // Get route for dashboard by the user ID from the session.user.id
 router.get('/dashboard', withAuth, async (req, res) => {
@@ -74,5 +74,25 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.status(500),json(err)
   }  
 });
+
+router.get('/blogpost/:id', async (req, res) => {
+
+  try {
+    const blogData = await Blogposts.findByPk({
+      where: {
+        id: req.params.id
+      }
+    });
+
+    const blog = blogData.map(blogData => blogData.toJSON());
+    console.log(blog);
+
+    
+  } catch (err) {
+    res.status(500).json(err)
+
+  }
+
+})
 
 module.exports = router;
