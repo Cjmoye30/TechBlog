@@ -32,7 +32,6 @@ Comments.init(
                 model: User,
                 key: 'id'
             }
-
         },
 
         // blogpost id

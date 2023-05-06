@@ -18,7 +18,7 @@ Blogposts.hasMany(Comments, {
 });
 
 //comments can only have 1 author
-Comments.hasOne(User, {
+Comments.belongsTo(User, {
     foreignKey: 'author_id'
 })
 

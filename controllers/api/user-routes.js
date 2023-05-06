@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Blogposts } = require('../../models')
+const { User, Blogposts, Comments } = require('../../models')
 
 router.post('/login', async (req, res) => {
     console.log("POST request hit!")
@@ -165,6 +165,27 @@ router.put('/blogpost/:id', async (req, res) => {
     }
 
 });
+
+// Comment on a blogpost
+router.post('/comment', async (req, res) => {
+    try {
+        const newComment = await Comments.create({
+            blogpost_id: req.body.blogpost_id,
+            description: req.body.description,
+            author_id: req.session.user_id
+        });
+        req.session.save(() => {
+            res.json({
+                success: true,
+                data: newComment,
+                message: 'New comment added!'
+            });
+        });
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 // DELETE post
 router.delete('/blogpost/:id', async (req, res) => {
