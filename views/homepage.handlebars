@@ -52,6 +52,11 @@ own dashboard to post new content --}}
 
     <p>{{description}}</p>
 
+    <h6>Comments:</h6>
+    {{#each comments}}
+      <p>{{this.description}}</p>
+    {{/each}}
+
     {{!-- add a comment --}}
     <div class="comments">
       <ul class="commentsSection"></ul>

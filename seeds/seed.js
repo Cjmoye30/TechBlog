@@ -1,10 +1,12 @@
 const { User } = require('../models');
 const { Blogposts} = require('../models');
+const { Comments } = require('../models')
 
 const sequelize = require('../config/connection');
 
 const userData = require('./userData.json');
 const blogData = require('./blogpostData.json');
+const commentsData = require('./commentsData.json')
 
 const seedDatabase = async () => {
 
@@ -23,7 +25,15 @@ const seedDatabase = async () => {
     individualHooks: true,
     returning: true,
   });
-  console.log('\n----- User Table Seeded -----\n');
+  console.log('\n----- Blogpost Table Seeded -----\n');
+
+  // Seed comments here
+  await Comments.bulkCreate(commentsData, {
+    individualHooks: true,
+    returning: true,
+  });
+
+  console.log('\n----- Comments Table Seeded -----\n');
 
   process.exit(0);
 };

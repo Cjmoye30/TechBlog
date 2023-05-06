@@ -1,5 +1,6 @@
 const User = require('./User');
 const Blogposts = require('./blogposts');
+const Comments = require('./comments');
 
 // User can have many blogposts
 User.hasMany(Blogposts, {
@@ -11,4 +12,14 @@ Blogposts.belongsTo(User, {
     foreignKey: 'author_id'
 });
 
-module.exports = { User, Blogposts};
+// Blogposts can have many comments
+Blogposts.hasMany(Comments, {
+    foreignKey: 'blogpost_id'
+});
+
+//comments can only have 1 author
+Comments.hasOne(User, {
+    foreignKey: 'author_id'
+})
+
+module.exports = { User, Blogposts, Comments };
