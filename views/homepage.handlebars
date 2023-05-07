@@ -39,57 +39,57 @@
     <div class="blog-header">
       <h3 class="blogTitle">{{title}}</h3>
       <div class="nameAndDate">
-        <p>Author: {{user.name}}</p>
-        <p>Date: {{format_date date_created}}</p>
+        <p class="contributorInfo">Created by: {{user.name}},{{format_date date_created}} </p>
       </div>
     </div>
 
     <div class="blogDescription">
-      <p>{{description}}</p>
+      <p class="descText">{{description}}</p>
     </div>
 
-
-    <h6>Comments:</h6>
-
-
-
-    <p>
-      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
+    {{!-- Collapse function for all of the comments so they are not taking up the entire page --}}
+    <p class="commentButtons">
+      <a class="btn comment-button" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
         aria-controls="collapse{{id}}">
-        Add a Comment!
+        View Comments
       </a>
+
+      <button id="{{id}}" class='comment-button btn' type="button" data-bs-toggle="modal"
+      data-bs-target="#exampleModal">Add Comment</button>
+
     </p>
 
+
+{{!-- if no comments, do not run - need ti figure out --}}
     <div class="collapse" id="collapse{{id}}">
       <div class="card card-body">
         {{#each comments}}
+        <hr>
         <div class="commentsWrapper">
           <p class="commentDesc">{{this.description}}</p>
           <p class="commentName">By: {{this.user.name}}, {{format_date this.date_created}} </p>
         </div>
+
+
+        {{else}}
+        <p>No comments for this post yet!</p>
         {{/each}}
       </div>
     </div>
 
-
-
-
-
     {{!-- add a comment --}}
     {{!-- should eventually show/hide on click --}}
-    <div class="comments">
-      <ul class="commentsSection"></ul>
-    </div>
+
     {{!-- id = session.id of the user who is logged in --}}
-    <i id="{{id}}" class='far fa-comment comment-button' type="button" data-bs-toggle="modal"
-      data-bs-target="#exampleModal" style='font-size:24px'></i>
+    {{!-- <i id="{{id}}" class='far fa-comment comment-button' type="button" data-bs-toggle="modal"
+      data-bs-target="#exampleModal" style='font-size:24px'></i> --}}
 
   </div>
   {{/each}}
 
 </div>
 {{#if session.logged_in}}
-<div>
+<div class="call-to-action">
   <h5>Add more posts from your Dashboard</h5>
   <button class="btn btn-secondary">
     <a href="/dashboard">Dashboard</a>
