@@ -32,36 +32,57 @@
 </div>
 
 <div>
-
-
-  <h1>Take a look at our most recent blogposts from accredited users! </h1>
+  <h2>Blogs from our users! </h2>
 
   {{#each blogArr}}
   <div class="blogpost">
-
     <div class="blog-header">
-      <h1>{{title}}</h1>
+      <h3 class="blogTitle">{{title}}</h3>
       <div class="nameAndDate">
-      <p>Author Name: {{user.name}}</p>
-      <p>Post Date: {{format_date date_created}}</p>
+        <p>Author: {{user.name}}</p>
+        <p>Date: {{format_date date_created}}</p>
       </div>
     </div>
 
-    <p>{{description}}</p>
+    <div class="blogDescription">
+      <p>{{description}}</p>
+    </div>
+
 
     <h6>Comments:</h6>
-    {{#each comments}}
-      <p>{{this.description}}</p>
-      <p>{{this.user.name}}</p>
-      <p>{{format_date this.date_created}}</p>
-    {{/each}}
+
+
+
+    <p>
+      <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
+        aria-controls="collapse{{id}}">
+        Add a Comment!
+      </a>
+    </p>
+
+    <div class="collapse" id="collapse{{id}}">
+      <div class="card card-body">
+        {{#each comments}}
+        <div class="commentsWrapper">
+          <p class="commentDesc">{{this.description}}</p>
+          <p class="commentName">By: {{this.user.name}}, {{format_date this.date_created}} </p>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+
+
+
+
 
     {{!-- add a comment --}}
+    {{!-- should eventually show/hide on click --}}
     <div class="comments">
       <ul class="commentsSection"></ul>
     </div>
-    {{!-- id = session.id  of the user who is logged in --}}
-    <i id="{{id}}" class='far fa-comment comment-button' type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style='font-size:24px'></i>
+    {{!-- id = session.id of the user who is logged in --}}
+    <i id="{{id}}" class='far fa-comment comment-button' type="button" data-bs-toggle="modal"
+      data-bs-target="#exampleModal" style='font-size:24px'></i>
 
   </div>
   {{/each}}

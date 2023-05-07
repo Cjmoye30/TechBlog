@@ -14,7 +14,7 @@ Blogposts.belongsTo(User, {
 
 // Blogposts can have many comments
 Blogposts.hasMany(Comments, {
-    foreignKey: 'blogpost_id'
+    foreignKey: 'blogpost_id',
 });
 
 //comments can only have 1 author

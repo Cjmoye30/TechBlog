@@ -1,10 +1,3 @@
-<h1>Dashboard Page</h1>
-
-<!-- Button trigger modal -->
-{{!-- <button id="3" type="button" class="btn btn-primary edit-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Edit
-</button> --}}
-
 <!-- Modal to handle blogpost updates -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -20,7 +13,7 @@
         <form class="form update-blog-form">
           <div class="form-group">
             <label for="blog-title-update">New Title:</label>
-            <input class="form-input update-title" type="text" id="blog-title-update" placeholder="hello there?" />
+            <input class="form-input update-title" type="text" id="blog-title-update"/>
           </div>
 
           <div class="form-group">
@@ -42,7 +35,7 @@
 {{!-- Section to show the user their posts --}}
 <div>
   {{!-- Showing the user each of their blogposts after they are logged in --}}
-  <h1>Hello, {{session.name}}! {{session.user_id}}</h1>
+  <h1>Hello, {{session.name}}!</h1>
   <h3>Your Blogposts:</h3>
   <div class="all-blogs-container">
 
@@ -54,7 +47,6 @@
       <div class="getthis">
         <h1 class="blog-title"> {{title}} </h1>
         <p class="blog-description"> {{description}} </p>
-        <p>{{id}}</p>
       </div>
       {{!-- edit button for button id --}}
       <i id="{{id}}" type="button" class='fas fa-edit edit-button' data-bs-toggle="modal" data-bs-target="#exampleModal" style='font-size:24px'></i>
@@ -67,6 +59,8 @@
 
   </div>
 </div>
+
+{{!-- should also have a section showing all of the comments I've made and then an option to delete those out --}}
 
 {{!-- Section for the user to add a new blogpost --}}
 <h5>Add a new post below:</h5>

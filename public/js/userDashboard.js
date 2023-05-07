@@ -19,7 +19,6 @@ $(".new-blog-form").on("submit", async (e) => {
             title: blogTitle.val(),
             description: blogDesc.val()
         };
-        console.log(newBlogData)
 
         // send a response to the user
         const response = await fetch('/api/users/blogpost', {
@@ -30,12 +29,8 @@ $(".new-blog-form").on("submit", async (e) => {
             }
         })
 
-        console.log(response);
-
         // handle the response coming back from the api
         const responseData = await response.json();
-        console.log(responseData);
-
         if (responseData.success) {
             console.log("New post created!");
             window.location.reload();
@@ -62,20 +57,13 @@ $(".edit-button").on("click", async (e) => {
     const responseData = await response.json();
     console.log(responseData.description);
 
-    // send this over to the modal?
-    // make the model text fields editable by default
-
-    // on click, we would then have to call the dashboard page again and it will render with the data we pass into it?
-
-    $(".update-title").attr("placeholder", responseData.title);
-    $(".update-desc").attr("placeholder", responseData.description);
+    $(".update-title").val(responseData.title);
+    $(".update-desc").text(responseData.description);
 
 });
 
 // click event for the modal submit button to perform a put reques to update the blogpost with the same id
 $(".updateBlogButton").on("click", async () => {
-    console.log("update blog button clicked!");
-
     try {
 
         const updateBlog = {
@@ -92,8 +80,6 @@ $(".updateBlogButton").on("click", async () => {
                 "Content-Type": "application/json"
             }
         });
-
-        console.log(response);
 
         // handle the response coming back from the api
         const responseData = await response.json();

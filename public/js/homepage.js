@@ -45,4 +45,10 @@ $(".addCommentButton").on("click", async (e) => {
 
 
     // on success - reload the page
+    if(responseData.success) {
+        console.log("New Comment Added!");
+
+        // redirect to the users dashboard where they can create new blogposts
+        window.location.reload();
+    }
 });
