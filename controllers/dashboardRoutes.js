@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const Blogposts = require('../models/blogposts');
 const User = require('../models/User');
+const Comments = require('../models/comments')
 
 // Get all blogposts by the user that is logged in and have them displayed on the page for them to present - finding all by user_id
 // The user can also add a blogpost from this page
@@ -16,13 +17,13 @@ router.get('/:id', async (req, res) => {
                 {
                   model: Blogposts,
                   attributes: ['title', 'description'],
-                }
-              ]
+                },
+              ]    
         });
-        // console.log(userData);
 
         const userArray = userData.get({ plain: true });
-        // console.log(userArray);
+        console.log(userArray);
+        console.log("hello?")
 
         res.render('dashboard', { userArray })
 

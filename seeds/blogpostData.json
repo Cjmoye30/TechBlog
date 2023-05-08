@@ -1,22 +1,22 @@
 [
     {
-        "title": "test-title",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nihil magnam blanditiis ratione soluta commodi mollitia iure non odio libero asperiores illo fuga quis modi consectetur, perferendis natus necessitatibus accusantium!",
-        "author_id": "2"
-      },
-    {
-        "title": "test-2",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nihil magnam blanditiis ratione soluta commodi mollitia iure non odio libero asperiores illo fuga quis modi consectetur, perferendis natus necessitatibus accusantium!",
+        "title": "Entering the Tech Industry - How are coding bootcamps?",
+        "description": "Every assignment has an inevitable bottleneck - once you get past that... you're gucci",
         "author_id": "1"
       },
     {
-        "title": "test-3",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nihil magnam blanditiis ratione soluta commodi mollitia iure non odio libero asperiores illo fuga quis modi consectetur, perferendis natus necessitatibus accusantium!",
+        "title": "AI - Are we moving too fast?",
+        "description": "AI is advancing at a dummy stupid pace and we need to pause it.",
+        "author_id": "1"
+      },
+    {
+        "title": "Blockchain - where can I find one",
+        "description": "Blockchains are digital ledgers that use a decentralized and distributed network of computers to record and store data in a secure and tamper-proof manner. Blockchains are composed of blocks of data that are chained together in a chronological sequence, hence the name blockchain",
         "author_id": "5"
       },
     {
-        "title": "test-4",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic nihil magnam blanditiis ratione soluta commodi mollitia iure non odio libero asperiores illo fuga quis modi consectetur, perferendis natus necessitatibus accusantium!",
-        "author_id": "2"
+        "title": "Can I put my clothes in the dishwasher?",
+        "description": "It is not recommended to put clothes in the dishwasher. The dishwasher is designed to clean dishes, and the water temperature and detergent used in dishwashers are not suitable for cleaning clothes. Additionally, dishwashers are not designed to handle the weight and volume of clothes, and it could cause damage to the dishwasher or your clothing.",
+        "author_id": "3"
       }
 ]

@@ -1,6 +1,5 @@
 // Once the user logs in, then console.log their req.seesion.user_id in a variable
 // use that session id to then redirect the to their dashboard
-console.log("login.js connected!");
 
 // Event listener added to the form and to keep track of the data inputs
 

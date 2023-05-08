@@ -1,0 +1,40 @@
+  <div class="blogpost">
+    <div class="blog-header">
+      {{!-- title and name section --}}
+      <h3 class="blogTitle">{{title}}</h3>
+      <div class="nameAndDate">
+        <p class="contributorInfo">Created by: {{user.name}},{{format_date date_created}} </p>
+      </div>
+    </div>
+
+    {{!-- blog text --}}
+    <div class="blogDescription">
+      <p class="descText">{{description}}</p>
+    </div>
+
+    {{!-- Collapse function for all of the comments so they are not taking up the entire page --}}
+    {{!-- Buttons for collapse/show and add comment --}}
+    <p class="commentButtons">
+      <a class="btn comment-button" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
+        aria-controls="collapse{{id}}">
+        View Comments
+      </a>
+      <button id="{{id}}" class='comment-button btn' type="button" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">Add Comment</button>
+    </p>
+
+    {{!-- Comments section --}}
+    <div class="collapse" id="collapse{{id}}">
+      <div class="card card-body">
+        {{#each comments}}
+        <hr>
+        <div class="commentsWrapper">
+          <p class="commentDesc">{{this.description}}</p>
+          <p class="commentName">By: {{this.user.name}}, {{format_date this.date_created}} </p>
+        </div>
+        {{else}}
+        <p>No comments for this post yet!</p>
+        {{/each}}
+      </div>
+    </div>
+  </div>

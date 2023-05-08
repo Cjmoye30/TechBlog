@@ -7,7 +7,6 @@ const passwordSignup = $("#password-signup");
 $(".signup-form").on("submit", async (e) => {
 
     try {
-        e.preventDefault();
 
         const signupData = {
             name: nameSignup.val(),

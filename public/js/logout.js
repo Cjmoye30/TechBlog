@@ -1,6 +1,4 @@
-alert("Logout.js is connected!")
 const logoutButton = $(".logoutBtn");
-
 
 logoutButton.click(async (event) => {
     console.log('Logout button clicked!')

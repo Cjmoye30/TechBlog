@@ -14,6 +14,16 @@
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/styles.css">
 
+  {{!-- Font Awesome for button icons --}}
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+  {{!-- Google fonts --}}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto+Mono:ital,wght@0,400;0,700;1,200&display=swap"
+    rel="stylesheet">
+    
   {{!-- JQuery Script --}}
   <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"
     integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
@@ -26,21 +36,21 @@
     <nav class="navbar navbar-light">
 
       <a href="/">
-        <h1>TechBlog</h1>
+        <h1 id="pageTitle">TechBlog</h1>
       </a>
 
       <div class="nav-links">
-        {{!-- Create conditional - if user is logged in, then show logout and vice versa --}}
-        <a class="nav-item nav-link loginButton" href="/login">Login</a>
-        <a class="nav-item nav-link logoutButton" href="/signup">Sign Up</a>
-        <button class="logoutBtn">Logout</button>
 
         {{#if session.logged_in}}
 
-        {{else}}
         <a class="nav-item nav-link" href="/">Home</a>
         <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
+        <p class="nav-item nav-link logoutBtn">Logout</p>
 
+        {{else}}
+
+        <a class="nav-item nav-link m-1 p-2 loginButton" href="/login">Login</a>
+        <a class="nav-item nav-link m-1 p-2 logoutButton" href="/signup">Sign Up</a>
 
         {{/if}}
 
@@ -49,12 +59,11 @@
   </header>
 
   <main class="container container-fluid mt-5">
-    <!-- Render the contents of the sub layout here -->
     {{{ body }}}
   </main>
 
-  <footer>
-    <p>footer content</p>
+  <footer class="footer text-center">
+    <p class="footer-text">Made with ❤️ in Charlotte, NC</p>
   </footer>
 
   {{!-- Bootstrap Script --}}
@@ -62,12 +71,10 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
 
-  {{!-- JS File --}}
-  <script src="/js/dashboard.js"></script>
-
   {{!-- Only importing the logout.js if someone is actually logged in already --}}
   {{#if session.logged_in}}
   <script type="text/javascript" src="/js/logout.js"></script>
+  <script type="text/javascript" src="/js/homepage.js"></script>
   {{/if}}
 </body>
 
