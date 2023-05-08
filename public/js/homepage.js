@@ -1,23 +1,24 @@
+
 // Selectors for title/desc of the post to comment on to show in modal
 const commentTitle = $(".currentTitle");
 const commentDesc = $(".currentDesc");
 
-let blogId = "";
-
 // Button to activate modal and prompt the user for a comment
 $(".comment-button").on("click", async (e) => {
+    console.log()
     blogId = e.target.id;
     console.log(blogId);
 
     // get the response back of the id of the blog clicked, so we can show that in the modal
     const response = await fetch(`/api/users/blogpost/${blogId}`);
-    console.log(response);
+    // console.log(response);
 
     // handle the response coming back from the api
     const responseData = await response.json();
 
     commentTitle.text(responseData.title);
     commentDesc.text(responseData.description);
+
 });
 
 $(".addCommentButton").on("click", async (e) => {

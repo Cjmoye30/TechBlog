@@ -52,16 +52,20 @@
 
     {{!-- Collapse function for all of the comments so they are not taking up the entire page --}}
     {{!-- Buttons for collapse/show and add comment --}}
-    <p class="commentButtons">
+
+    {{#if ../session.logged_in}}
+        <div class="commentButtons">
       <a class="btn comment-button" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
         aria-controls="collapse{{id}}">
         View Comments
       </a>
       <button id="{{id}}" class='comment-button btn' type="button" data-bs-toggle="modal"
         data-bs-target="#exampleModal">Add Comment</button>
-    </p>
-
+    </div>
+    {{else}}
+    {{/if}}
     {{!-- Comments section --}}
+
     <div class="collapse" id="collapse{{id}}">
       <div class="card card-body">
         {{#each comments}}
@@ -76,10 +80,11 @@
       </div>
     </div>
   </div>
-    <hr>
+  <hr>
+
   {{/each}}
 
-{{!-- Have the user go to their dashbaord to add more blogs --}}
+  {{!-- Have the user go to their dashbaord to add more blogs --}}
 </div>
 {{#if session.logged_in}}
 <div class="call-to-action">
@@ -92,7 +97,8 @@
 {{!-- Get the user to signup if they aren't already convinced --}}
 {{else}}
 <div class="call-to-action">
-  <h2>Want to contribute? Sign up or login below!</h2>
+  <h3>Want to create your own blogpost, or view/add comments?</h3>
+  <h3>Sign up or login below!</h3>
   <div class="login-buttons">
     <button class="btn cta-button">Login</button>
     <button class="btn cta-button">Signup</button>

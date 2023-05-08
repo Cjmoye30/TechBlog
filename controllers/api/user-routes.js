@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { User, Blogposts, Comments } = require('../../models')
+const { User, Blogposts, Comments } = require('../../models');
+const withAuth = require('../../utils/auth');
+
 
 router.post('/login', async (req, res) => {
     console.log("POST request hit!")
@@ -38,6 +40,8 @@ router.post('/login', async (req, res) => {
                         message: 'You are now logged in!'
                     });
                 });
+
+                console.log(req.session.logged_in)
 
             } else {
                 return res.status(400).json("Password was incorrect!")
@@ -121,7 +125,7 @@ router.post('/blogpost', async (req, res) => {
 });
 
 // Get an existing blogpost by the ID passed in from a button click
-router.get('/blogpost/:id', async (req, res) => {
+router.get('/blogpost/:id', withAuth, async (req, res) => {
 
     try {
         const blogData = await Blogposts.findByPk(req.params.id);

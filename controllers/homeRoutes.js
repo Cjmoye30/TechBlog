@@ -138,7 +138,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   }  
 });
 
-router.get('/blogpost/:id', async (req, res) => {
+router.get('/blogpost/:id', withAuth, async (req, res) => {
 
   try {
     const blogData = await Blogposts.findByPk({
