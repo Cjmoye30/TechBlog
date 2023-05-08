@@ -20,6 +20,11 @@ Blogposts.hasMany(Comments, {
 //comments can only have 1 author
 Comments.belongsTo(User, {
     foreignKey: 'author_id'
+});
+
+// associate blogposts to comments
+Comments.belongsTo(Blogposts, {
+    foreignKey: 'blogpost_id'
 })
 
 module.exports = { User, Blogposts, Comments };

@@ -54,10 +54,12 @@ h6 {
 
 body {
     font-family: 'Roboto Mono', monospace;
+    background-color: whitesmoke;
 }
 
 /* ----- Main ----- */
 #pageTitle {
+    font-family: 'Press Start 2P', cursive;
     color: var(--c3);
     font-size: 3rem;
     font-weight: bold;
@@ -87,7 +89,7 @@ body {
     margin: 0;
 }
 
-.commentButtons {
+.commentButtons, .editButtons, .commentFooter {
     display: flex;
     justify-content: space-around;
     background-color: var(--c1);
@@ -112,31 +114,52 @@ body {
     overflow: hidden;
 }
 
-.blog-header {
+.blog-header, .commentHeader {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: left;
     background-color: var(--c2);
+    border-bottom: 3px solid var(--c1);
     color: var(--c4);
     padding: 20px;
+    margin-bottom: 0;
+    overflow: hidden;
 }
 
 .contributorInfo {
     font-style: italic;
 }
 
-.blogDescription {
+.blogDescription, .commentText {
     background-color: var(--c4);
     padding: 20px 30px;
 }
 
-.descText {
+.descText, .commentText {
     line-height: 3rem;
+    margin-bottom: 0;
 }
 
 .edit-btn {
     padding: 0px 5px;
+}
+
+.modal-content {
+    border: 1px solid var(--c4);
+}
+
+.modal-footer, .modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: var(--c1);
+    color: var(--c4);
+}
+
+.modal-footer .btn {
+    background-color: var(--c4);
+    color: var(--c1);
 }
 
 .card-body {
@@ -155,7 +178,51 @@ body {
     border-radius: 10px 10px 0 0;
 }
 
+.cta-button {
+    background-color: var(--c1);
+    color: var(--c4);
+}
+
 footer {
     bottom: 0px;
     color: var(--c4);
 }
+
+/* login & signup pages */
+.login-row, .signup-row {
+    border: 5px solid var(--c1);
+    border-radius: 10px;
+    overflow: hidden;
+    padding-bottom: 20px;
+}
+
+.row-title {
+    background-color: var(--c2);
+    color: var(--c4);
+    padding: 30px;
+}
+
+/* comments */
+.dash-blogpost {
+    margin: 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid var(--c1);
+}
+
+.commentHeader {
+    padding: 5px;
+}
+
+.commentData {
+    margin: 0;
+}
+
+.commentText {
+    padding: 15px 5px;
+}
+
+.commentDate {
+    border-bottom: 2px solid var(--c1);
+}
+

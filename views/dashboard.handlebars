@@ -12,12 +12,12 @@
         {{!-- populate the modal with the id, title, and description from the button click --}}
         <form class="form update-blog-form">
           <div class="form-group">
-            <label for="blog-title-update">New Title:</label>
-            <input class="form-input update-title" type="text" id="blog-title-update"/>
+            <h6><label for="blog-title-update">New Title:</label></h6>
+            <input class="form-input update-title" type="text" id="blog-title-update" />
           </div>
 
           <div class="form-group">
-            <label for="blog-desc-update">New Description:</label>
+            <h6><label for="blog-desc-update">New Description:</label></h6>
             <textarea class="form-input update-desc" id="blog-desc-update"></textarea>
           </div>
         </form>
@@ -33,34 +33,67 @@
 </div>
 
 {{!-- Section to show the user their posts --}}
-<div>
-  {{!-- Showing the user each of their blogposts after they are logged in --}}
+<div class="row dashboard-container">
   <h1>Hello, {{session.name}}!</h1>
-  <h3>Your Blogposts:</h3>
-  <div class="all-blogs-container">
+  <hr>
 
-    {{#each userArray}}
+  <div class="col col-lg-8">
+    {{!-- Showing the user each of their blogposts after they are logged in --}}
+    <h3>Your Blogposts:</h3>
+    <div class="all-blogs-container">
 
-    {{!-- store the blog id so that on a click event we can know which blog to edit --}}
-    {{!-- on edit click, give the selected blog contenteditable="true" --}}
-    <div class="blog-entry">
-      <div class="getthis">
-        <h1 class="blog-title"> {{title}} </h1>
-        <p class="blog-description"> {{description}} </p>
+      {{#each userArray}}
+
+      {{!-- store the blog id so that on a click event we can know which blog to edit --}}
+      {{!-- on edit click, give the selected blog contenteditable="true" --}}
+      <div class="blog-entry dash-blogpost">
+        <div class="getthis">
+          <h1 class="blog-header"> {{title}} </h1>
+          <p class="blogDescription descText"> {{description}} </p>
+        </div>
+        {{!-- edit button for button id --}}
+        <div class="editButtons">
+
+          <i id="{{id}}" type="button" class='fas fa-edit edit-button' data-bs-toggle="modal"
+            data-bs-target="#exampleModal" style='font-size:24px'></i>
+
+          {{!-- delete button for button id --}}
+          <i id="{{id}}" class='fas fa-trash delete-button' style='font-size:24px'></i>
+
+        </div>
       </div>
-      {{!-- edit button for button id --}}
-      <i id="{{id}}" type="button" class='fas fa-edit edit-button' data-bs-toggle="modal" data-bs-target="#exampleModal" style='font-size:24px'></i>
 
-      {{!-- delete button for button id --}}
-      <i id="{{id}}" class='fas fa-trash delete-button' style='font-size:24px'></i>
+      {{/each}}
+
+    </div>
+  </div>
+
+  {{!-- Comments Section --}}
+  <div class="col col-lg-4">
+    <h3>Your Comments:</h3>
+
+    {{#each commentArray}}
+    <div class="commentsWrapper">
+      <div class="commentHeader">
+        <p class="commentTitle commentData">Blog Title: {{blogpost.title}}</p>
+        <p class="commentDate commentData">Date Commented: {{format_date date_created}}</p>
+      </div>
+      <p class="commentText commentData">{{description}}</p>
+      <div class="commentFooter">
+          <i id="{{id}}" class='fas fa-trash delete-button' style='font-size:24px'></i>
+      </div>
     </div>
 
+
+    {{else}}
+    <p>No comments yet!</p>
     {{/each}}
 
   </div>
 </div>
 
 {{!-- should also have a section showing all of the comments I've made and then an option to delete those out --}}
+<hr>
 
 {{!-- Section for the user to add a new blogpost --}}
 <h5>Add a new post below:</h5>
@@ -73,7 +106,7 @@
     </div>
 
     <div class="form-group">
-      <label for="blog-desc">description:</label>
+      <label for="blog-desc">Description:</label>
       <textarea class="form-input" id="blog-desc"></textarea>
     </div>
 

@@ -71,16 +71,34 @@ router.get('/dashboard', withAuth, async (req, res) => {
             },
         ]
         });
-    
+
+        const commentData = await Comments.findAll({
+          where: {
+            author_id: req.session.user_id
+          },
+          include: [
+            {
+              model: Blogposts,
+              attributes: ['title'],
+            }
+          ]
+        });
+
+   
         // Converting the userData into an object we can pass into our handlebars template
         const userArray = userData.map(userData => userData.toJSON());
+        const commentArray = commentData.map(commentData => commentData.toJSON());
+        console.log("USER DATA -----------")
         console.log(userArray);
+        console.log("COMMENT DATA -----------")
+        console.log(commentArray)
     
         // render the dashboard for the current user that just logged in with the new array we got from the map function
-        res.render('dashboard', {userArray});
+        res.render('dashboard', {userArray, commentArray});
     
   } catch (err) {
-    res.status(500),json(err)
+    console.log(err)
+    res.status(500).json(err)
   }  
 });
 

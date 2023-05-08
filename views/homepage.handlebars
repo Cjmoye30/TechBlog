@@ -34,33 +34,34 @@
 <div>
   <h2>Blogs from our users! </h2>
 
+  {{!-- Pulling all blog data from the db --}}
   {{#each blogArr}}
   <div class="blogpost">
     <div class="blog-header">
+      {{!-- title and name section --}}
       <h3 class="blogTitle">{{title}}</h3>
       <div class="nameAndDate">
         <p class="contributorInfo">Created by: {{user.name}},{{format_date date_created}} </p>
       </div>
     </div>
 
+    {{!-- blog text --}}
     <div class="blogDescription">
       <p class="descText">{{description}}</p>
     </div>
 
     {{!-- Collapse function for all of the comments so they are not taking up the entire page --}}
+    {{!-- Buttons for collapse/show and add comment --}}
     <p class="commentButtons">
       <a class="btn comment-button" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
         aria-controls="collapse{{id}}">
         View Comments
       </a>
-
       <button id="{{id}}" class='comment-button btn' type="button" data-bs-toggle="modal"
-      data-bs-target="#exampleModal">Add Comment</button>
-
+        data-bs-target="#exampleModal">Add Comment</button>
     </p>
 
-
-{{!-- if no comments, do not run - need ti figure out --}}
+    {{!-- Comments section --}}
     <div class="collapse" id="collapse{{id}}">
       <div class="card card-body">
         {{#each comments}}
@@ -69,24 +70,15 @@
           <p class="commentDesc">{{this.description}}</p>
           <p class="commentName">By: {{this.user.name}}, {{format_date this.date_created}} </p>
         </div>
-
-
         {{else}}
         <p>No comments for this post yet!</p>
         {{/each}}
       </div>
     </div>
-
-    {{!-- add a comment --}}
-    {{!-- should eventually show/hide on click --}}
-
-    {{!-- id = session.id of the user who is logged in --}}
-    {{!-- <i id="{{id}}" class='far fa-comment comment-button' type="button" data-bs-toggle="modal"
-      data-bs-target="#exampleModal" style='font-size:24px'></i> --}}
-
   </div>
   {{/each}}
 
+{{!-- Have the user go to their dashbaord to add more blogs --}}
 </div>
 {{#if session.logged_in}}
 <div class="call-to-action">
@@ -96,18 +88,13 @@
   </button>
 </div>
 
+{{!-- Get the user to signup if they aren't already convinced --}}
 {{else}}
 <div class="call-to-action">
   <h2>Want to contribute? Sign up or login below!</h2>
   <div class="login-buttons">
-    <button class="btn btn-secondary">Login</button>
-    <button class="btn btn-secondary">Signup</button>
+    <button class="btn cta-button">Login</button>
+    <button class="btn cta-button">Signup</button>
   </div>
 </div>
 {{/if}}
-
-{{!-- This page should show all of the posts by the different users AFTER they are logged in --}}
-{{!-- We can populate our database with random educational facts about tech - EASY --}}
-{{!-- Once logged in, the API for the homepage will get all blog posts --}}
-{{!-- the database can have just one table which stores all of the blog posts by all of the users - then if we would
-ever want to query by a single user, then we can pass that into the url --}}
