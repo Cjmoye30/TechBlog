@@ -1,9 +1,9 @@
 <!-- Modal to handle blogpost updates -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="updatePost" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Update Blogpost</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Update/Edit Blogpost</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -32,11 +32,43 @@
   </div>
 </div>
 
+{{!-- Modal to update comments --}}
+<div class="modal fade" id="updateComment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update/Edit Comment</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        {{!-- populate the modal with the id, title, and description from the button click --}}
+        <form class="form update-blog-form">
+
+          <div class="form-group">
+            <h6><label for="blog-comment-update">Comment:</label></h6>
+            <textarea class="form-input update-comment" id="blog-desc-comment"></textarea>
+          </div>
+        </form>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary updateCommentButton">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 {{!-- Section to show the user their posts --}}
 <div class="row dashboard-container">
   <h1>Hello, {{session.name}}!</h1>
   <hr>
 
+  {{!-- User blog section --}}
   <div class="col col-lg-8">
     {{!-- Showing the user each of their blogposts after they are logged in --}}
     <h3>Your Blogposts:</h3>
@@ -55,7 +87,7 @@
         <div class="editButtons">
 
           <i id="{{id}}" type="button" class='fas fa-edit edit-button' data-bs-toggle="modal"
-            data-bs-target="#exampleModal" style='font-size:24px'></i>
+            data-bs-target="#updatePost" style='font-size:24px'></i>
 
           {{!-- delete button for button id --}}
           <i id="{{id}}" class='fas fa-trash delete-button' style='font-size:24px'></i>
@@ -71,7 +103,6 @@
   {{!-- Comments Section --}}
   <div class="col col-lg-4">
     <h3>Your Comments:</h3>
-
     {{#each commentArray}}
     <div class="commentsWrapper">
       <div class="commentHeader">
@@ -80,7 +111,12 @@
       </div>
       <p class="commentText commentData">{{description}}</p>
       <div class="commentFooter">
-          <i id="{{id}}" class='fas fa-trash delete-button' style='font-size:24px'></i>
+        <i id="{{id}}" class='fas fa-trash comment-delete-button' style='font-size:24px'></i>
+
+        <i id="{{blogpost_id}}" class='fas fa-external-link-alt link-button' style='font-size:24px'></i>
+
+        <i id="{{id}}" type="button" class='fas fa-edit comment-edit-button' data-bs-toggle="modal"
+          data-bs-target="#updateComment" style='font-size:24px'></i>
       </div>
     </div>
 

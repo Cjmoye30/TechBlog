@@ -44,6 +44,42 @@ router.get('/', async (req, res) => {
 
 });
 
+// get blog by single id
+router.get('/homepage/:id', async (req, res) => {
+  console.log("fix homepage for only post:", req.params.id);
+
+  try {
+    const blogData = await Blogposts.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+        {
+          model: Comments,
+          include: [
+            {
+              model: User,
+              attributes: ['name']
+            }
+          ]
+        }
+      ]
+    });
+    console.log(blogData);
+
+    const blogJson = blogData.toJSON();
+    console.log("-----------------blog json")
+    console.log(blogJson);
+    res.render('singlePostHomepage', blogJson)
+
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err)
+  }
+
+});
+
 // Get route for login screen
 router.get('/login', async (req, res) => {
   res.render('login');

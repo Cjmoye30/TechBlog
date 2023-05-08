@@ -8,6 +8,7 @@ const updateBlogDesc = $("#blog-desc-update");
 
 // Access the active blog id in modal after click event on edit button
 let blogId = "";
+let commentId = "";
 
 // Submit new blog event handler
 $(".new-blog-form").on("submit", async (e) => {
@@ -114,3 +115,69 @@ $(".delete-button").on("click", async (e) => {
         console.log("Something went wrong")
     }
 });
+
+// External link to go to the dashboard for to view the blog the user commented on
+$(".link-button").on("click", async (e) => {
+    window.location.replace(`homepage/${e.target.id}`)
+})
+
+$(".comment-delete-button").on("click", async (e) => {
+    console.log(e.target.id);
+
+    const response = await fetch(`/api/users/comment/${e.target.id}`, {
+        method: "DELETE",
+    });
+
+    if (response.ok) {
+        window.location.reload();
+    } else {
+        console.log("Something went wrong")
+    }
+})
+
+$(".comment-edit-button").on("click", async (e) => {
+    commentId = e.target.id
+
+    const response = await fetch(`/api/users/comment/${commentId}`)
+    console.log(response);
+
+    const responseData = await response.json();
+    console.log(responseData.description);
+
+    $(".update-comment").text(responseData.description);
+})
+
+$(".updateCommentButton").on("click", async (e) => {
+    try {
+
+        const updateComment = {
+            id: commentId,
+            description: $("#blog-desc-comment").val()
+        };
+
+        // send a response to the user
+        const response = await fetch(`/api/users/comment/${commentId}`, {
+            method: "PUT",
+            body: JSON.stringify(updateComment),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        // handle the response coming back from the api
+        const responseData = await response.json();
+        console.log(responseData);
+
+        if (responseData.success) {
+            console.log("Post updated!");
+            // reload the page to show the new post
+            window.location.reload();
+        } else {
+            console.log("Something went wrong! Try again!")
+        }
+
+    } catch (err) {
+        console.log(err)
+    }
+
+})

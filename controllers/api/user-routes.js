@@ -141,6 +141,21 @@ router.get('/blogpost/:id', async (req, res) => {
         res.status(500).json(err)
     }
 });
+// Get existing commend by ID to pass into update comment modal
+router.get('/comment/:id', async (req, res) => {
+
+    try {
+        const commentData = await Comments.findByPk(req.params.id);
+
+        const comment = commentData.toJSON();
+
+        console.log(comment);
+        res.json(comment);
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+});
 
 // UPDATE blogpost
 router.put('/blogpost/:id', async (req, res) => {
@@ -165,6 +180,31 @@ router.put('/blogpost/:id', async (req, res) => {
     }
 
 });
+
+// UPDATE comment
+router.put('/comment/:id', async (req, res) => {
+
+    try {
+        const commentData = await Comments.update(req.body, {
+            where: {
+                id: req.body.id
+            }
+        })
+
+        req.session.save(() => {
+            res.json({
+                success: true,
+                data: commentData,
+                message: 'Comment Updated!'
+            });
+        });
+
+    } catch (err) {
+        res.status(500).json(err)
+    }
+
+});
+
 
 // Comment on a blogpost
 router.post('/comment', async (req, res) => {
@@ -206,5 +246,25 @@ router.delete('/blogpost/:id', async (req, res) => {
         res.status(500).json(err);
       }
 });
+
+// DELETE Comment
+router.delete('/comment/:id', async (req, res) => {
+    try {
+        const commentData = await Comments.destroy({
+          where: {
+            id: req.params.id,
+          },
+        });
+    
+        if (!commentData) {
+          res.status(404).json({ message: 'No comment found with this id!' });
+          return;
+        }
+    
+        res.status(200).json(commentData);
+      } catch (err) {
+        res.status(500).json(err);
+      }
+})
 
 module.exports = router;
