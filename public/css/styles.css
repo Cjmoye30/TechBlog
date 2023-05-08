@@ -5,11 +5,6 @@
     --c4: #defeff;
 }
 
-* {
-    border: .1px solid black;
-}
-
-
 header,
 footer {
     background-color: var(--c1);
@@ -84,9 +79,12 @@ body {
     font-weight: lighter;
     color: var(--c1);
     margin: 20px 0;
-    border-radius: 10px;
-    overflow: hidden;
+}
+
+.commentsWrapperDash {
     border: 3px solid var(--c1);
+    overflow: hidden;
+    border-radius: 10px;
 }
 
 .commentDesc {
@@ -113,7 +111,7 @@ body {
     display: flex;
     flex-direction: column;
     border: 5px solid var(--c1);
-    margin: 75px auto;
+    margin: 50px auto;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -168,6 +166,7 @@ body {
 
 .card-body {
     border: none;
+    margin-bottom: 0;
 }
 
 .call-to-action {
@@ -220,6 +219,7 @@ footer {
 
 .commentData {
     margin: 0;
+    padding: 10px 15px;
 }
 
 .commentText {
