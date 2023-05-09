@@ -52,6 +52,10 @@ h6 {
 body {
     font-family: 'Roboto Mono', monospace;
     background-color: whitesmoke;
+    background-image: url('../images/3274408.jpg');
+    background-position: center;
+    background-repeat: none;
+    object-fit: cover;
 }
 
 /* ----- Main ----- */
@@ -81,14 +85,16 @@ body {
     font-style: italic;
     font-weight: lighter;
     color: var(--c1);
-    margin: 20px 0;
+    /* margin: 20px 0; */
 }
 
 .commentsWrapperDash {
     border: 3px solid var(--c1);
     overflow: hidden;
     border-radius: 10px;
-    margin: 10px;
+    margin: 20px;
+    box-shadow: 10px 10px 10px rgb(59, 59, 59);
+
 }
 
 .commentDesc {
@@ -111,13 +117,14 @@ body {
 }
 
 /* ----- Blogposts ----- */
-.blogpost {
+.blogpost, .blog-entry {
     display: flex;
     flex-direction: column;
     border: 5px solid var(--c1);
     margin: 50px auto;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 10px 10px 15px rgb(59, 59, 59);
 }
 
 .blog-header, .commentHeader {
@@ -212,10 +219,18 @@ footer {
 
 /* comments */
 .dash-blogpost {
-    margin: 10px 0;
+    margin: 20px 0;
     border-radius: 10px;
     overflow: hidden;
     border: 3px solid var(--c1);
+}
+
+.column-title {
+    text-align: center;
+}
+
+.left-col {
+    border-right: 1px solid var(--c1);
 }
 
 .commentHeader {
@@ -232,10 +247,17 @@ footer {
 }
 
 .commentDate {
-    border-bottom: 2px solid var(--c1);
+    border-top: 1px solid var(--c1);
 }
 
 .login-buttons {
     display: flex;
     flex-direction: row;
+}
+
+@media screen and (max-width: 526px) {
+
+    .left-col {
+        border: none;
+    }
 }

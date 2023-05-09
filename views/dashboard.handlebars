@@ -69,9 +69,9 @@
   <hr>
 
   {{!-- User blog section --}}
-  <div class="col col-lg-8">
+  <div class="col col-lg-8 left-col">
     {{!-- Showing the user each of their blogposts after they are logged in --}}
-    <h3>Your Blogposts:</h3>
+    <h3 class="column-title">Your Blogposts:</h3>
     <div class="all-blogs-container">
 
       {{#each userArray}}
@@ -99,12 +99,12 @@
 
   {{!-- User Comments Section --}}
   <div class="col col-lg-4">
-    <h3>Your Comments:</h3>
+    <h3 class="column-title">Your Comments:</h3>
     {{#each commentArray}}
     <div class="commentsWrapperDash">
       <div class="commentHeader">
-        <p class="commentTitle commentData">Blog Title: {{blogpost.title}}</p>
-        <p class="commentDate commentData">Date Commented: {{format_date date_created}}</p>
+        <p class="commentTitle commentData"> <em>Blog Title:</em>  {{blogpost.title}}</p>
+        <p class="commentDate commentData"> <em>Date Commented:</em>  {{format_date date_created}}</p>
       </div>
       <p class="commentText commentData">{{description}}</p>
 
