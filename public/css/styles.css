@@ -5,10 +5,12 @@
     --c4: #defeff;
 }
 
+
 header,
 footer {
     background-color: var(--c1);
     color: var(--c4);
+
 }
 
 footer {
@@ -58,6 +60,7 @@ body {
     color: var(--c3);
     font-size: 3rem;
     font-weight: bold;
+    padding: 20px;
 }
 
 .nav-links {
@@ -185,6 +188,7 @@ body {
 .cta-button {
     background-color: var(--c1);
     color: var(--c4);
+    margin: 5px;
 }
 
 footer {
@@ -231,3 +235,7 @@ footer {
     border-bottom: 2px solid var(--c1);
 }
 
+.login-buttons {
+    display: flex;
+    flex-direction: row;
+}

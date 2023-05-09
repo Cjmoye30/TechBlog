@@ -54,7 +54,7 @@
     {{!-- Buttons for collapse/show and add comment --}}
 
     {{#if ../session.logged_in}}
-        <div class="commentButtons">
+    <div class="commentButtons">
       <a class="btn comment-button" data-bs-toggle="collapse" href="#collapse{{id}}" role="button" aria-expanded="false"
         aria-controls="collapse{{id}}">
         View Comments
@@ -89,7 +89,7 @@
 {{#if session.logged_in}}
 <div class="call-to-action">
   <h5>Add more posts from your Dashboard</h5>
-  <button class="btn btn-secondary">
+  <button class="btn cta-button">
     <a href="/dashboard">Dashboard</a>
   </button>
 </div>
@@ -100,8 +100,12 @@
   <h3>Want to create your own blogpost, or view/add comments?</h3>
   <h3>Sign up or login below!</h3>
   <div class="login-buttons">
-    <button class="btn cta-button">Login</button>
-    <button class="btn cta-button">Signup</button>
+    <button class="btn cta-button">
+      <a href="/login">Login</a>
+    </button>
+    <button class="btn cta-button">
+      <a href="/signup">Signup</a>
+    </button>
   </div>
 </div>
 {{/if}}

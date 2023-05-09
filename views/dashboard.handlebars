@@ -76,31 +76,28 @@
 
       {{#each userArray}}
 
-      {{!-- store the blog id so that on a click event we can know which blog to edit --}}
-      {{!-- on edit click, give the selected blog contenteditable="true" --}}
       <div class="blog-entry dash-blogpost">
         <div class="getthis">
           <h1 class="blog-header"> {{title}} </h1>
           <p class="blogDescription descText"> {{description}} </p>
         </div>
-        {{!-- edit button for button id --}}
         <div class="editButtons">
 
-          <i id="{{id}}" type="button" class='fas fa-edit edit-button' data-bs-toggle="modal"
+          {{!-- edit button for id --}}
+          <i id="{{id}}" type="button" class='fa-solid fa-pen-to-square edit-button' data-bs-toggle="modal"
             data-bs-target="#updatePost" style='font-size:24px'></i>
 
-          {{!-- delete button for button id --}}
-          <i id="{{id}}" class='fas fa-trash delete-button' style='font-size:24px'></i>
+          {{!-- delete button for id --}}
+          <i id="{{id}}" type="button" class="fa-solid fa-trash delete-button" style='font-size:24px'></i>
 
         </div>
       </div>
-
       {{/each}}
 
     </div>
   </div>
 
-  {{!-- Comments Section --}}
+  {{!-- User Comments Section --}}
   <div class="col col-lg-4">
     <h3>Your Comments:</h3>
     {{#each commentArray}}
@@ -110,25 +107,25 @@
         <p class="commentDate commentData">Date Commented: {{format_date date_created}}</p>
       </div>
       <p class="commentText commentData">{{description}}</p>
+
+      {{!-- Action buttons --}}
       <div class="commentFooter">
-        <i id="{{id}}" class='fas fa-trash comment-delete-button' style='font-size:24px'></i>
-
-        <i id="{{blogpost_id}}" class='fas fa-external-link-alt link-button' style='font-size:24px'></i>
-
-        <i id="{{id}}" type="button" class='fas fa-edit comment-edit-button' data-bs-toggle="modal"
+        <i id="{{id}}" type="button" class='fa-solid fa-pen-to-square comment-edit-button' data-bs-toggle="modal"
           data-bs-target="#updateComment" style='font-size:24px'></i>
+
+        <i id="{{id}}" class='fa-solid fa-trash comment-delete-button' style='font-size:24px'></i>
+
+        <i id="{{blogpost_id}}" class='fa-solid fa-arrow-up-right-from-square link-button' style='font-size:24px'></i>
+
       </div>
     </div>
-
 
     {{else}}
     <p>No comments yet!</p>
     {{/each}}
-
   </div>
 </div>
 
-{{!-- should also have a section showing all of the comments I've made and then an option to delete those out --}}
 <hr>
 
 {{!-- Section for the user to add a new blogpost --}}
@@ -153,5 +150,3 @@
 </div>
 
 <script type="text/javascript" src="/js/userDashboard.js"></script>
-
-{{!-- on button click, get the id of the blogpost you need --}}
