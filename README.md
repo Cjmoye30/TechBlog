@@ -21,8 +21,8 @@
 
   ### Screenshots: 
 
-  - [Heroku Deployed Application]()
-  - [Walkthrough Video]()
+  - [Heroku Deployed Application](https://peaceful-oasis-37638.herokuapp.com/)
+
   - Screenshot:
   ![Screenshots](/public/images/techblog1.png)
 
