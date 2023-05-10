@@ -255,6 +255,10 @@ footer {
     flex-direction: row;
 }
 
+.login-row, .signup-row {
+    background-color: var(--c4);
+}
+
 @media screen and (max-width: 526px) {
 
     .left-col {
