@@ -257,6 +257,8 @@ footer {
 
 .login-row, .signup-row {
     background-color: var(--c4);
+    box-shadow: 10px 10px 10px rgb(59, 59, 59);
+
 }
 
 @media screen and (max-width: 526px) {
