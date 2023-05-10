@@ -5,6 +5,7 @@ const passwordSignup = $("#password-signup");
 
 // Event listener placed on the login form to track submissions
 $(".signup-form").on("submit", async (e) => {
+    e.preventDefault();
 
     try {
 
@@ -27,11 +28,11 @@ $(".signup-form").on("submit", async (e) => {
         });
 
         const responseData = await response.json();
-        console.log("Response Data:",responseData);
+        console.log("Response Data:----------------------------------",responseData);
 
         if(responseData.success) {
             console.log("You are now signed in and being redirected to your dashboard where you can create your own blogposts!");
-            window.location.replace('/dashboard')
+            window.location.replace('/dashboard');
         } else {
             console.log("Something went wrong! Try again!")
         }

@@ -85,13 +85,13 @@ router.post('/signup', async (req, res) => {
                 req.session.name = newUser.name,
                 req.session.logged_in = true;
 
-            res.json({
-                success: true,
-                user: newUser,
-                message: 'You are now logged in!'
+                res.json({
+                    success: true,
+                    user: newUser,
+                    message: 'You are now logged in!'
+                });
             });
-        });
-
+            
 
     } catch (err) {
         res.status(500).json(err)
