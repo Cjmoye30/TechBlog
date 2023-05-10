@@ -50,7 +50,6 @@ h6 {
 
 body {
     font-family: 'Roboto Mono', monospace;
-    background-color: whitesmoke;
     background-image: url('../images/3274408.jpg');
     background-position: center;
     background-repeat: none;
@@ -259,6 +258,14 @@ footer {
     background-color: var(--c4);
     box-shadow: 10px 10px 10px rgb(59, 59, 59);
 
+}
+
+.newPost {
+    background-color: var(--c4);
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 2px solid var(--c1);
+    border-radius: 10px;
 }
 
 @media screen and (max-width: 526px) {
